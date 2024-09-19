@@ -1,7 +1,10 @@
 const container = document.querySelector('.container');
-const createDiv = document.createElement('div');
-let userGridInput = 61;
-let gridCount = userGridInput * userGridInput;
+// const createDiv = document.createElement('div');
+const generateBtn = document.querySelector('.generate-grid-btn');
+const inputValue = document.querySelector('#user-input');
+
+let userGridInput, gridCount, cssVar;
+
 // Get the root element for CSS variables
 const CssRoot = document.querySelector(':root');
 
@@ -18,9 +21,17 @@ const cssBasisVsGridInput ={
     64: 11
 }
 
+
+function setCssVariable(userinput) {
+    cssVar = setCssBasisDevider(userinput)
+    // Set the value of CSS variable
+    CssRoot.style.setProperty('--flexBasisDevide', cssVar);
+  }
 function setCssBasisDevider(input){
-    if(input <= 21){
+    if(input <= 21 && input > 1){
         return input + 1;
+    }else if(input <= 27){
+        return input + 2;
     }else if(input <= 31){
         return input + 3;
     }else if(input <= 37){
@@ -37,26 +48,48 @@ function setCssBasisDevider(input){
         return input + 9;
     }else if(input <= 61){
         return input + 10;
-    }else if(input <= 64){
+    }else if(input <= 63){
         return input + 11;
+    }else if(input === 64){
+        return input + 12;
     }else{
-        return `please pick a number between 2 and 64`
+        clearGrid();
+        inputValue.value = '';
     }
 }
-function myFunction_set() {
-    // Set the value of CSS variable
-    CssRoot.style.setProperty('--flexBasisDevide', 61 + 10);
-  }
 
-
-myFunction_set()
+  function clearGrid() {
+    //e.firstElementChild can be used. 
+    let child = container.lastElementChild;
+    while (child) {
+        container.removeChild(child);
+        child = container.lastElementChild;
+    }
+}
+//   setCssVariable(userinput)
 
 // let rowPercentageDivider = 100 /
 
-for(let sqNo = 1; sqNo <= gridCount; sqNo++) {
+generateBtn.addEventListener("click", () =>{
+    clearGrid();
+    userGridInput = Number(inputValue.value);
+    console.log(userGridInput);
+    gridCount = userGridInput * userGridInput;
+    console.log(gridCount);
 
-    const createDiv = document.createElement('div');
-    createDiv.setAttribute("class", "boxes");
-    createDiv.setAttribute("id", `box-${sqNo}`);
-    container.appendChild(createDiv);
-};
+    for(let sqNo = 1; sqNo <= gridCount; sqNo++) {
+
+        const createDiv = document.createElement('div');
+        createDiv.setAttribute("class", "boxes");
+        createDiv.setAttribute("id", `box-${sqNo}`);
+        container.appendChild(createDiv);
+    };
+    // console.log(setCssBasisDevider(userGridInput));
+    // console.log(setCssVariable(userGridInput));
+    setCssVariable(userGridInput);
+
+    createDiv = 0;
+    inputValue.value = '';
+})
+
+
