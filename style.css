@@ -35,5 +35,11 @@ button{
     /* width: 60px; */
     flex-grow: 1;
     flex-basis: calc(100% / var(--flexBasisDevide));
+    /* https://www.reddit.com/r/Frontend/comments/1305h8t/how_to_make_flex_show_an_equal_number_of_items/ */
+    /* https://sanjeebaryal.com.np/flexbox-making-x-items-per-row/ */
     border: 1px solid #787a79;
 }
+
+/* .boxes:hover{
+    background-color: blue;
+} */
