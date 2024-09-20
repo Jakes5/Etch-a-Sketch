@@ -4,6 +4,7 @@ const generateBtn = document.querySelector('.generate-grid-btn');
 const inputValue = document.querySelector('#user-input');
 const boxes = document.querySelector('.boxes');
 let userGridInput, gridCount;
+const rainbowColors = ['#e81416','#ffa500','#faeb36','#79c314','#487de7','#4b369d','#70369d']
 
   function clearGrid() {
     //e.firstElementChild can be used. 
@@ -50,9 +51,11 @@ generateBtn.addEventListener("click", () =>{
     
         // Colouring event
         for(let sqNo = 1; sqNo <= gridCount; sqNo++){
+            
             document.querySelector(`#box-${sqNo}`).addEventListener('mouseover',()=>{
-                document.querySelector(`#box-${sqNo}`).style.backgroundColor="#db4a8b";
-            })
+                let blockColor = Math.floor(Math.random() * rainbowColors.length);
+                document.querySelector(`#box-${sqNo}`).style.backgroundColor=rainbowColors[blockColor];
+            });
         }
         createDiv = 0;
         inputValue.value = '';
