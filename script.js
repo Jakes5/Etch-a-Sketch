@@ -38,22 +38,24 @@ function setCssBasisDevider(input){
         return input + 4;
     }else if(input <= 42){
         return input + 5;
-    }else if(input <= 46){
+    }else if(input <= 45){
         return input + 6;
-    }else if(input <= 49){
+    }else if(input <= 47){
         return input + 7;
-    }else if(input <= 51){
+    }else if(input <= 49){
         return input + 8;
-    }else if(input <= 54){
+    }else if(input <= 52){
         return input + 9;
-    }else if(input <= 57){
+    }else if(input <= 55){
         return input + 10;
-    }else if(input <= 59){
+    }else if(input <= 57){
         return input + 11;
-    }else if(input <= 62){
+    }else if(input <= 60){
         return input + 12;
-    }else if(input <= 64){
+    }else if(input <= 62){
         return input + 13;
+    }else if(input <= 64){
+        return input + 14;
     }else{
         clearGrid();
         inputValue.value = '';
@@ -81,10 +83,11 @@ generateBtn.addEventListener("click", () =>{
     console.log(gridCount);
 
     for(let sqNo = 1; sqNo <= gridCount; sqNo++) {
-
         const createDiv = document.createElement('div');
         createDiv.setAttribute("class", "boxes");
         createDiv.setAttribute("id", `box-${sqNo}`);
+        createDiv.style.width = 100 / userGridInput + "%";
+        createDiv.style.height = 100 / userGridInput + "%";
         container.appendChild(createDiv);
     };
     

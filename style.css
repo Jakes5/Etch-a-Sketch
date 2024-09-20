@@ -2,12 +2,15 @@
     --flexBasisDevide: 69;
   }
   
-
+h1{
+    text-align: center;
+    margin: 0.5rem;
+}
 .container{
     margin: 0 auto;
     display: flex;
-    width: 960px;
-    height: 960px;
+    width: 575px;
+    height: 575px;
     align-items: stretch;
     flex-wrap: wrap;
 
@@ -27,7 +30,7 @@
 }
 
 button{
-    width: 960px
+    width: 182.2px
 }
 
 .boxes{
